@@ -1,0 +1,46 @@
+name: json-extraction
+description: Extract structured JSON from unstructured text; scored by schema + field equality.
+cases:
+  - id: invoice_schema
+    prompt: |
+      Extract the vendor and total amount from this text as JSON with keys
+      "vendor" (string) and "amount" (number, no currency symbol).
+      Text: "Invoice from Acme Corp, total due $1240.50, net 30."
+      Reply with only the JSON object.
+    scorer:
+      type: json_schema
+      schema:
+        type: object
+        required: [vendor, amount]
+        properties:
+          vendor: {type: string}
+          amount: {type: number}
+
+  - id: contact_email
+    prompt: |
+      Return a JSON object {"name": ..., "email": ...} extracted from:
+      "Please reach out to Jane Doe at jane@example.com for scheduling."
+      Reply with only the JSON.
+    scorer: {type: json_field_equals, field: email, value: jane@example.com}
+
+  - id: order_status
+    prompt: |
+      Convert to JSON {"order_id": ..., "status": ...} from:
+      "Order #A1007 has shipped and is on its way."
+      Use lowercase for status. Reply with only the JSON.
+    scorer: {type: json_field_equals, field: status, value: shipped}
+
+  - id: ticket_schema
+    prompt: |
+      Extract a support ticket as JSON with keys "priority" (one of low/medium/high)
+      and "category" (string) from:
+      "URGENT: customer cannot log in, authentication is down for everyone."
+      Reply with only the JSON object.
+    scorer:
+      type: json_schema
+      schema:
+        type: object
+        required: [priority, category]
+        properties:
+          priority: {type: string, enum: [low, medium, high]}
+          category: {type: string}

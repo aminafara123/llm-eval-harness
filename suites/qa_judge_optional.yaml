@@ -1,0 +1,17 @@
+name: qa-judge-optional
+# OPTIONAL suite: demonstrates the llm_judge scorer. Run with `--judge` AND a reachable
+# model. llm_judge output is AI-GENERATED and ADVISORY -- never part of the offline gate.
+# Without --judge, these cases report as "skipped" (not-passed) so they stay visible.
+description: Open-ended answers graded by an optional, advisory LLM judge.
+cases:
+  - id: explain_dns
+    prompt: "In two sentences, explain what DNS does for a non-technical reader."
+    scorer:
+      type: llm_judge
+      criteria: "The answer correctly explains DNS maps domain names to IP addresses, in plain language."
+
+  - id: summarize_policy
+    prompt: "Summarize the purpose of a password policy in one sentence."
+    scorer:
+      type: llm_judge
+      criteria: "The answer states a password policy sets rules to make passwords harder to guess/compromise."

@@ -1,0 +1,18 @@
+{
+  "suite": "qa-basics",
+  "generated_at": "2026-10-13T09:00:00+00:00",
+  "total": 7,
+  "passed": 5,
+  "failed": 2,
+  "pass_rate": 0.7143,
+  "avg_latency_ms": 420,
+  "results": [
+    {"id": "capital_france", "scorer": "contains", "passed": true, "detail": "found substring 'Paris'", "latency_ms": 310, "error": null},
+    {"id": "water_formula", "scorer": "contains", "passed": true, "detail": "found substring 'H2O'", "latency_ms": 290, "error": null},
+    {"id": "planets_count", "scorer": "numeric", "passed": true, "detail": "got 8.0, want 8.0+-0.0", "latency_ms": 275, "error": null},
+    {"id": "speed_of_light", "scorer": "numeric", "passed": true, "detail": "got 299792.0, want 299792.0+-1000.0", "latency_ms": 540, "error": null},
+    {"id": "boiling_point", "scorer": "numeric", "passed": false, "detail": "got 212.0, want 100.0+-2.0 (|diff|=112)", "latency_ms": 480, "error": null},
+    {"id": "no_colors", "scorer": "contains_all", "passed": true, "detail": "all present", "latency_ms": 610, "error": null},
+    {"id": "has_year", "scorer": "regex", "passed": false, "detail": "regex no match: '\\b1969\\b'", "latency_ms": 435, "error": null}
+  ]
+}

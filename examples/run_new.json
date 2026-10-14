@@ -1,0 +1,19 @@
+{
+  "suite": "qa-basics",
+  "generated_at": "2026-10-14T09:00:00+00:00",
+  "total": 8,
+  "passed": 6,
+  "failed": 2,
+  "pass_rate": 0.75,
+  "avg_latency_ms": 405,
+  "results": [
+    {"id": "capital_france", "scorer": "contains", "passed": true, "detail": "found substring 'Paris'", "latency_ms": 300, "error": null},
+    {"id": "water_formula", "scorer": "contains", "passed": false, "detail": "missing substring 'H2O'", "latency_ms": 295, "error": null},
+    {"id": "planets_count", "scorer": "numeric", "passed": true, "detail": "got 8.0, want 8.0+-0.0", "latency_ms": 270, "error": null},
+    {"id": "speed_of_light", "scorer": "numeric", "passed": true, "detail": "got 299792.0, want 299792.0+-1000.0", "latency_ms": 520, "error": null},
+    {"id": "boiling_point", "scorer": "numeric", "passed": true, "detail": "got 100.0, want 100.0+-2.0 (|diff|=0)", "latency_ms": 470, "error": null},
+    {"id": "no_colors", "scorer": "contains_all", "passed": true, "detail": "all present", "latency_ms": 600, "error": null},
+    {"id": "has_year", "scorer": "regex", "passed": false, "detail": "regex no match: '\\b1969\\b'", "latency_ms": 430, "error": null},
+    {"id": "mountain_height", "scorer": "numeric", "passed": true, "detail": "got 8849.0, want 8849.0+-50.0", "latency_ms": 355, "error": null}
+  ]
+}

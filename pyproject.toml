@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-eval-harness"
+version = "0.1.0"
+description = "Offline-first evaluation harness for LLM apps/prompts, with deterministic scorers and regression tracking."
+authors = [{ name = "Al Amin Bashir Afara", email = "aminafara123@gmail.com" }]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PyYAML>=6,<7",
+    "jsonschema>=4,<5",
+]
+
+[project.scripts]
+llm-eval-harness = "eval_harness.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["eval_harness"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+addopts = "-q"
+testpaths = ["tests"]

@@ -1,0 +1,30 @@
+name: qa-basics
+description: Factual short-answer QA scored with deterministic string/number scorers.
+cases:
+  - id: capital_france
+    prompt: "What is the capital of France? Reply with only the city name."
+    scorer: {type: contains, value: Paris}
+
+  - id: water_formula
+    prompt: "What is the chemical formula of water? Reply with only the formula."
+    scorer: {type: contains, value: H2O}
+
+  - id: planets_count
+    prompt: "How many planets are in our solar system? Reply with just the number."
+    scorer: {type: numeric, value: 8, tolerance: 0}
+
+  - id: speed_of_light
+    prompt: "Roughly how fast does light travel in a vacuum, in km/s? Give a single number."
+    scorer: {type: numeric, value: 299792, tolerance: 1000}
+
+  - id: boiling_point
+    prompt: "At sea level, at what temperature in Celsius does water boil? Reply with a number."
+    scorer: {type: numeric, value: 100, tolerance: 2}
+
+  - id: no_colors
+    prompt: "Name the three primary colors of light (additive). List them separated by commas."
+    scorer: {type: contains_all, values: [red, green, blue]}
+
+  - id: has_year
+    prompt: "In what year did the Apollo 11 mission land humans on the Moon?"
+    scorer: {type: regex, pattern: "\\b1969\\b"}

@@ -1,0 +1,25 @@
+name: sentiment-classification
+description: Short-text sentiment classification; label must appear in the reply.
+cases:
+  - id: pos_review
+    prompt: &clf |
+      Classify the sentiment of the text as exactly one of: positive, negative, neutral.
+      Reply with only that one word.
+      Text: "$text"
+    vars: {text: "Absolutely love it, best purchase I've made all year!"}
+    scorer: {type: contains_any, values: [positive]}
+
+  - id: neg_review
+    prompt: *clf
+    vars: {text: "Terrible quality and it broke after one day. Very disappointed."}
+    scorer: {type: contains_any, values: [negative]}
+
+  - id: neutral_review
+    prompt: *clf
+    vars: {text: "The package arrived on Tuesday as scheduled."}
+    scorer: {type: contains_any, values: [neutral]}
+
+  - id: exact_label
+    prompt: *clf
+    vars: {text: "This is fine, nothing special but it works."}
+    scorer: {type: contains_any, values: [neutral, positive]}
